@@ -1,5 +1,5 @@
 class Task < ActiveRecord::Base
-  belongs_to :list, class_name: TaskList
+  belongs_to :list, class_name: 'TaskList'
 
   acts_as_list scope: :list, column: :priority, add_new_at: :top
 

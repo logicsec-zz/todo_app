@@ -1,20 +1,26 @@
 source 'https://rubygems.org'
 
-ruby "2.2.4"
 
-gem 'rails', '4.0.13'
+gem 'rails'
 gem 'pg'
-gem 'sass-rails', '~> 4.0.0'
-gem 'uglifier', '>= 1.3.0'
-gem 'coffee-rails', '~> 4.0.0'
+gem 'sass-rails'
+gem 'uglifier'
+gem 'coffee-rails'
 gem 'jquery-rails'
 gem 'turbolinks'
-gem 'jbuilder', '~> 1.2'
-gem 'devise', '~> 3.0.4'
+gem 'jbuilder'
 gem 'slim'
 gem 'active_model_serializers'
-gem 'jquery-ui-rails', '= 4.0.3'
+gem 'jquery-ui-rails', '5.0.5'
 gem 'acts_as_list'
+
+#Fixes For Windows
+gem 'bcrypt', git: 'https://github.com/codahale/bcrypt-ruby.git', :require => 'bcrypt'
+gem 'tzinfo-data'
+
+# Use Devise for authentication
+gem 'devise'
+
 
 group :doc do
   gem 'sdoc', require: false
@@ -22,6 +28,10 @@ end
 
 group :production do
   gem 'rails_12factor'
+end
+
+group :development do
+  gem 'dotenv'
 end
 
 group :test do
