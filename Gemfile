@@ -21,6 +21,10 @@ gem 'tzinfo-data'
 # Use Devise for authentication
 gem 'devise'
 
+# OmniAuth Gems
+gem 'omniauth-facebook'
+gem 'omniauth-google-oauth2'
+gem 'activerecord-session_store'
 
 group :doc do
   gem 'sdoc', require: false

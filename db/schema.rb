@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_11_035741) do
+ActiveRecord::Schema.define(version: 2018_09_12_034240) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,9 +25,9 @@ ActiveRecord::Schema.define(version: 2018_09_11_035741) do
   end
 
   create_table "task_lists", force: :cascade do |t|
-    t.integer "owner_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.bigint "owner_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "name"
     t.index ["owner_id"], name: "index_task_lists_on_owner_id"
   end
@@ -37,9 +37,10 @@ ActiveRecord::Schema.define(version: 2018_09_11_035741) do
     t.integer "priority"
     t.date "due_date"
     t.boolean "completed", default: false, null: false
-    t.integer "list_id", null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.bigint "list_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["list_id"], name: "index_tasks_on_list_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -53,9 +54,11 @@ ActiveRecord::Schema.define(version: 2018_09_11_035741) do
     t.datetime "last_sign_in_at"
     t.string "current_sign_in_ip"
     t.string "last_sign_in_ip"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "authentication_token"
+    t.string "provider", limit: 50, default: "", null: false
+    t.string "uid", limit: 500, default: "", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
