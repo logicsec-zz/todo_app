@@ -6,4 +6,5 @@
 //= require lib/angular.min
 //= require lib/angular-resource.min
 //= require todoApp
+//= require social-share-button
 //= require_tree .

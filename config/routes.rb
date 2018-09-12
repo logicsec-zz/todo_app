@@ -13,6 +13,6 @@ Todo::Application.routes.draw do
   root :to => "home#index"
 
   get '/dashboard' => 'templates#index'
-  get '/task_lists/:id' => 'templates#index'
+  get '/task_lists/:id' => 'templates#index', :as => 'task'
   get '/templates/:path.html' => 'templates#template', :constraints => { :path => /.+/  }
 end
