@@ -1,33 +1,62 @@
-# Showcase of Rails 4 and AngularJS integration
+# Simple ToDo App Using Angular with OAuth integration
 
 This is a todo list management application, written in Rails 4 and AngularJS. Tasks support CRUD operations as well as drag&drop sorting and setting due dates via a popup calendar. All task operations are done on the client side and synchronized to the server. The application sports a RESTful API used by AngularJS SPA and also usable standalone.
 
-Check out the demo at [todo-rails4-angularjs](http://todo-rails4-angularjs.herokuapp.com/).
 
-I wrote [an article that summarizes all the lessons learned during writing of this app](http://blog.ragnarson.com/2013/10/01/how-to-integrate-angularjs-with-rails-4). I also did a presentation about this integration at Ruby User Group in Sopot on September 18th. Check out [the slides](http://mkwiatkowski.github.io/angularjs-rails4-trug-presentation/).
 
-## Technologies used
 
-### Frontend
 
- - [Bootstrap 3.0.0](http://getbootstrap.com/)
- - [AngularJS 1.2.16](http://angularjs.org/)
- - [jQuery 1.10.2](http://jquery.com/)
- - [jQuery UI 1.10.3](http://jqueryui.com/)
- - [CoffeeScript 1.6.3](http://coffeescript.org/)
- - [Slim 2.0.1](http://slim-lang.com/)
- - [Sass 3.2.10](http://sass-lang.com/)
- - [Karma 0.10.2](http://karma-runner.github.io/)
- - [Jasmine 1.3.1](http://pivotal.github.io/jasmine/)
- - [editablespan](https://github.com/mkwidzinska/editablespan)
- - [ui-sortable](https://github.com/angular-ui/ui-sortable)
+## Setup
 
-### Backend
+### Clone Repo
+```sh
+git clone https://github.com/nickmc01/todo_app.git
+```
 
- - [Ruby 2.0.0p247](http://www.ruby-lang.org/en/)
- - [Ruby on Rails 4.0.0](http://rubyonrails.org/)
- - [Devise 3.0.3](https://github.com/plataformatec/devise)
- - [active_model_serializers 0.8.1](https://github.com/rails-api/active_model_serializers)
- - [acts_as_list 0.3.0](https://github.com/swanandp/acts_as_list)
- - [Rspec 2.14](http://rspec.info/)
- - [factory_girl 4.2.0](https://github.com/thoughtbot/factory_girl)
+### Configure
+Rename database.yml.example to database.yml in your config folder
+
+Please check out this article to setup your Facebook and Google Applications
+https://scotch.io/tutorials/integrating-social-login-in-a-ruby-on-rails-application
+Create a .env file in your files root directory and add the following filling out the details.
+
+```sh
+FACEBOOK_APP_ID=''
+FACEBOOK_APP_SECRET=''
+
+GOOGLE_CLIENT_ID=''
+GOOGLE_APP_SECRET=''
+```
+
+### Bundler
+Run the following
+```sh
+bundle install
+```
+
+### Rake
+Next we will setup our database.
+```sh
+rake db:setup
+```
+
+Once the setup is complete, you will notice that a lot of information was added.
+
+### Run
+A small note, due to Facebook restrictions, you cannot share to Facebook while on localhost. That being said, I suggest setting up Heroku to view the app.
+```sh
+heroku login #enter your login credentials
+git add . #adds your files to the git repository
+git commit -m "Initial Commit" # You can change initial commit to anything.
+git push heroku master # If you are on a different branch, use git push heroku BRANCH_NAME:master
+```
+
+You should now see a URL after it is finished with the setup. As of right now, your app wont work. We need to run:
+```sh
+heroku run rake db:migrate
+```
+This will run the migrations and ensure that the database is setup correctly.
+
+
+
+And that's it. You should have a working ToDo list. If you find any bugs or have suggestions to make this better, feel free to open a new issue and I will get working on it.
