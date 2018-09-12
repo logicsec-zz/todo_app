@@ -14,7 +14,7 @@ git clone https://github.com/nickmc01/todo_app.git
 ```
 
 ### Configure
-Rename database.yml.example to database.yml in your config folder
+Rename database.yml.example to database.yml in your config folder and add in your credentials.
 
 Please check out this article to setup your Facebook and Google Applications
 https://scotch.io/tutorials/integrating-social-login-in-a-ruby-on-rails-application
@@ -54,8 +54,10 @@ git push heroku master # If you are on a different branch, use git push heroku B
 You should now see a URL after it is finished with the setup. As of right now, your app wont work. We need to run:
 ```sh
 heroku run rake db:migrate
+heroku config:set heroku config:set GOOGLE_APP_ID=PUT_YOUR_GOOGLE_APP_ID_HERE GOOGLE_APP_SECRET=PUT_YOUR_GOOGLE_APP_SECRET_HERE
+heroku config:set FACEBOOK_APP_ID=PUT_YOUR_FACEBOOK_APP_ID_HERE FACEBOOK_APP_SECRET=PUT_YOUR_GOOGLE_APP_SECRET_HERE
 ```
-This will run the migrations and ensure that the database is setup correctly.
+This will run the migrations and setup your environment to allow OAuth to work.
 
 
 
