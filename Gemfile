@@ -26,6 +26,9 @@ gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
 gem 'activerecord-session_store'
 
+# Social Sharing
+gem 'shareable'
+
 group :doc do
   gem 'sdoc', require: false
 end
